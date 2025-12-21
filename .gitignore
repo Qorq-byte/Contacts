@@ -1,0 +1,14 @@
+.vs/
+*.vcxproj.user
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+*.exe
+*.obj
+*.pdb
+*.ilk
+contact.txt
+contact - 副本.c
+contact - 副本.h
+__pycache__/
