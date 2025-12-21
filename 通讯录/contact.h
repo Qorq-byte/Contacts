@@ -41,8 +41,10 @@ typedef struct  Contact
 }Contact;
 
 //初始化通讯录
+int InitContact(Contact* pc);
 
 //销毁通讯录
+void DestoryContact(Contact* pc);
 
 //增加联系人到通讯录
 
