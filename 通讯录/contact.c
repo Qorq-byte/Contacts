@@ -60,7 +60,29 @@ void DestoryContact(Contact* pc)
 
 
 //动态版本
-
+void AddContact(Contact* pc)
+{
+	assert(pc);
+	//增容
+	if (pc->count == pc->capacity)
+	{
+		puts("Contact list is full.");
+		return;
+	}
+	//
+	printf("请输入名字:");
+	scanf("%s", pc->date[pc->count].name);
+	printf("请输入年龄:");
+	scanf("%d", &(pc->date[pc->count].age));
+	printf("请输入性别:");
+	scanf("%s", pc->date[pc->count].sex);
+	printf("请输入电话:");
+	scanf("%s", pc->date[pc->count].tele);
+	printf("请输入地址:");
+	scanf("%s", pc->date[pc->count].addr);
+	pc->count++;
+	printf("增加成功\n");
+}
 
 
 

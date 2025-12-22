@@ -15,6 +15,7 @@ enum Option
 void meun()
 {
 	printf("*********************************\n");
+	puts("1.添加");
 	printf("****0.退出                  ****\n");
 	printf("*********************************\n");
 	printf("*********************************\n");
@@ -36,6 +37,9 @@ int main()
 		scanf_s("%d", &input);
 		switch(input)
 		{
+			case ADD:
+				AddContact(&con);
+				break;
 			case EXIT:
 				DestoryContact(&con);
 				printf("退出通讯录\n");

@@ -47,6 +47,7 @@ int InitContact(Contact* pc);
 void DestoryContact(Contact* pc);
 
 //增加联系人到通讯录
+void AddContact(Contact* pc);
 
 //打印通讯录信息
 
