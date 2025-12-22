@@ -8,7 +8,24 @@
 //	memset(pc->date, 0, sizeof(pc->date));
 //}
 
-
+void CheckCapacity(Contact* pc)
+{
+	if (pc->count == pc->capacity)
+	{
+		PeoInfo* ptr = (PeoInfo*)realloc(pc->date, (pc->capacity + INC_SZ) * sizeof(PeoInfo));
+		if (ptr == NULL)
+		{
+			printf("AddContact::%s\n", strerror(errno));
+			return;
+		}
+		else
+		{
+			pc->date = ptr;
+			pc->capacity += INC_SZ;
+			printf("增容成功\n");
+		}
+	}
+}
 
 
 //动态版本
@@ -64,11 +81,7 @@ void AddContact(Contact* pc)
 {
 	assert(pc);
 	//增容
-	if (pc->count == pc->capacity)
-	{
-		puts("Contact list is full.");
-		return;
-	}
+	CheckCapacity(pc);
 	//
 	printf("请输入名字:");
 	scanf("%s", pc->date[pc->count].name);
