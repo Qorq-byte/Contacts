@@ -16,6 +16,7 @@ void meun()
 {
 	printf("*********************************\n");
 	puts("1.Ìí¼Ó");
+	puts("5.ÏÔÊ¾");
 	printf("****0.ÍË³ö                  ****\n");
 	printf("*********************************\n");
 	printf("*********************************\n");
@@ -39,6 +40,9 @@ int main()
 		{
 			case ADD:
 				AddContact(&con);
+				break;
+			case SHOW:
+				ShowContact(&con);
 				break;
 			case EXIT:
 				DestoryContact(&con);

@@ -50,6 +50,7 @@ void DestoryContact(Contact* pc);
 void AddContact(Contact* pc);
 
 //打印通讯录信息
+void ShowContact(const Contact* pc);
 
 //删除指定联系人
 

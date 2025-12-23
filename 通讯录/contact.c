@@ -97,7 +97,21 @@ void AddContact(Contact* pc)
 	printf("增加成功\n");
 }
 
+void ShowContact(const Contact* pc)
+{
+	assert(pc);
+	int i = 0;
+	printf("%20s\t%5s\t%5s\t%12s\t%30s\n", "名字", "年龄", "性别", "电话", "地址");
+	for (i = 0; i < pc->count; i++)
+	{
+		printf("%20s\t%3d\t%5s\t%12s\t%30s\n", pc->date[i].name,
+			pc->date[i].age,
+			pc->date[i].sex,
+			pc->date[i].tele,
+			pc->date[i].addr);
+	}
 
+}
 
 
 
