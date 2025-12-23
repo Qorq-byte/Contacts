@@ -55,6 +55,7 @@ void ShowContact(const Contact* pc);
 //删除指定联系人
 
 //查找指定联系人
+void SearchContact(Contact* pc);
 
 //修改指定联系人
 

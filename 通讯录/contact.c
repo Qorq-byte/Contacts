@@ -112,11 +112,43 @@ void ShowContact(const Contact* pc)
 	}
 
 }
+static int FindByName(Contact* pc, char name[])
+{
+	assert(pc);
+	int i = 0;
+	for (i = 0; i < pc->count; i++)
+	{
+		if (0 == strcmp(pc->date[i].name, name))
+		{
+			return i;
+		}
+	}
+	return -1;
+}
 
 
 
-
-
+void SearchContact(Contact* pc)
+{
+	assert(pc);
+	char name[MAX_NAME] = { 0 };
+	printf("请输入要查找人的名字:");
+	scanf("%s", name);
+	//查找
+	int pos = FindByName(pc, name);
+	if (pos == -1)
+	{
+		printf("要查找的人不存在\n");
+		return;
+	}
+	//打印
+	printf("%20s\t%5s\t%5s\t%12s\t%30s\n", "名字", "年龄", "性别", "电话", "地址");
+	printf("%20s\t%3d\t%5s\t%12s\t%30s\n", pc->date[pos].name,
+			pc->date[pos].age,
+			pc->date[pos].sex,
+			pc->date[pos].tele,
+			pc->date[pos].addr);
+}
 
 
 
