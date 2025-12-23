@@ -16,6 +16,7 @@ void meun()
 {
 	printf("*********************************\n");
 	puts("1.添加");
+	puts("2.删除");
 	puts("3.查找");
 	puts("5.显示");
 	printf("****0.退出                  ****\n");
@@ -41,6 +42,9 @@ int main()
 		{
 			case ADD:
 				AddContact(&con);
+				break;
+			case DEL:
+				DelContact(&con);   
 				break;
 			case SEARCH:
 				SearchContact(&con);

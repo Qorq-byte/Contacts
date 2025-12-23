@@ -126,7 +126,33 @@ static int FindByName(Contact* pc, char name[])
 	return -1;
 }
 
-
+void DelContact(Contact* pc)
+{
+	char name[MAX_NAME] = { 0 };
+	assert(pc);
+	int i = 0;
+	if (pc->count == 0)
+	{
+		printf("通讯录为空，没有信息可以删除\n");
+		return;
+	}
+	printf("请输入要删除人的名字:");
+	scanf("%s", name);
+	//查找
+	int pos=FindByName(pc, name); 
+	if (pos == -1)
+	{
+		printf("要删除的人不存在\n");
+		return;
+	}
+	//删除
+	for (int i = pos; i < pc->count-1; i++)
+	{
+		pc->date[i] = pc->date[i + 1];
+	}
+	pc->count--;
+	printf("删除成功\n");
+}
 
 void SearchContact(Contact* pc)
 {
