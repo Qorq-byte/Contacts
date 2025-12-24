@@ -62,6 +62,7 @@ void SearchContact(Contact* pc);
 void ModifyContact(Contact* pc);
 
 //排序通讯录的内容
+void SortContact(Contact* pc);
 
 //保存通讯录信息到文件
 

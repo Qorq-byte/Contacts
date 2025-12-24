@@ -204,9 +204,17 @@ void ModifyContact(Contact* pc)
 	printf("修改成功\n");
 }
 
-
+int cmp_peo_name(const void* e1, const void* e2)
+{
+	return strcmp(((PeoInfo*)e1)->name, ((PeoInfo*)e2)->name);
+}
 //按照名字来排序
-
+void SortContact(Contact* pc)
+{
+	assert(pc);
+	qsort(pc->date, pc->count, sizeof(PeoInfo), cmp_peo_name);
+	printf("排序成功\n");
+}
 
 
 

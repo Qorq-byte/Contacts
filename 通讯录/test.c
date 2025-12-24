@@ -15,11 +15,9 @@ enum Option
 void meun()
 {
 	printf("*********************************\n");
-	puts("1.添加");
-	puts("2.删除");
-	puts("3.查找");
-	puts("4.修改");
-	puts("5.显示");
+	printf("****1.增加             2.删除****\n");
+	printf("****3.搜索             4.修改****\n");
+	printf("****5.显示             6.排序****\n");
 	printf("****0.退出                  ****\n");
 	printf("*********************************\n");
 	printf("*********************************\n");
@@ -55,6 +53,9 @@ int main()
 				break;
 			case SHOW:
 				ShowContact(&con);
+				break;
+			case SORT:
+				SortContact(&con);
 				break;
 			case EXIT:
 				DestoryContact(&con);
