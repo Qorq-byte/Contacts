@@ -65,6 +65,7 @@ void ModifyContact(Contact* pc);
 void SortContact(Contact* pc);
 
 //保存通讯录信息到文件
+void SaveContact(const Contact* pc);
 
 //加载文件的信息到通讯录中
 

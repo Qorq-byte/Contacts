@@ -216,7 +216,25 @@ void SortContact(Contact* pc)
 	printf("排序成功\n");
 }
 
-
+void SaveContact(const Contact* pc)
+{
+	assert(pc);
+	FILE* pfWrite = fopen("contact.txt", "wb");
+	if (pfWrite == NULL)
+	{
+		perror("SaveContact");
+		return;
+	}
+	//写文件--二进制
+	int i = 0;
+	for (i = 0; i < pc->count; i++)
+	{
+		fwrite(pc->date + i, sizeof(PeoInfo), 1, pfWrite);
+	}
+	//关闭文件
+	fclose(pfWrite);
+	pfWrite = NULL;
+}
 
 
 
