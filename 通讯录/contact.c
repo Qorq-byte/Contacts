@@ -176,7 +176,33 @@ void SearchContact(Contact* pc)
 			pc->date[pos].addr);
 }
 
-
+void ModifyContact(Contact* pc)
+{
+	assert(pc);
+	char name[MAX_NAME] = { 0 };
+	printf("请输入要修改人的名字:");
+	scanf("%s", name);
+	//查找
+	int pos = FindByName(pc, name);
+	if (pos == -1)
+	{
+		printf("要修改的人不存在\n");
+		return;
+	}
+	printf("要修改人的信息已查找到，记下来开始修改\n");
+	//修改
+	printf("请输入名字:");
+	scanf("%s", pc->date[pos].name);
+	printf("请输入年龄:");
+	scanf("%d", &(pc->date[pos].age));
+	printf("请输入性别:");
+	scanf("%s", pc->date[pos].sex);
+	printf("请输入电话:");
+	scanf("%s", pc->date[pos].tele);
+	printf("请输入地址:");
+	scanf("%s", pc->date[pos].addr);
+	printf("修改成功\n");
+}
 
 
 //按照名字来排序

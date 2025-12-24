@@ -59,6 +59,7 @@ void DelContact(Contact*pc);
 void SearchContact(Contact* pc);
 
 //修改指定联系人
+void ModifyContact(Contact* pc);
 
 //排序通讯录的内容
 
