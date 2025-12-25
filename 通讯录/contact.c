@@ -27,7 +27,27 @@ void CheckCapacity(Contact* pc)
 	}
 }
 
+void LoadContact(Contact* pc)
+{
+	FILE* pfRead = fopen("contact.txt", "rb");
+	if (pfRead == NULL)
+	{
+		perror("LoadContact");
+		return;
+	}
+	PeoInfo tmp = { 0 };
 
+	while (fread(&tmp, sizeof(PeoInfo), 1, pfRead) == 1)
+	{
+		CheckCapacity(pc);
+		pc->date[pc->count]=tmp;
+		pc->count++;
+
+	}
+	
+	fclose(pfRead);
+	pfRead = NULL;
+}
 //动态版本
 int InitContact(Contact* pc)
 {
@@ -41,6 +61,7 @@ int InitContact(Contact* pc)
 	}
 	pc->capacity = DEFAULT_SZ;
 	//加载文件的信息到通讯录中
+	LoadContact(pc);
 	return 0;
 }
 

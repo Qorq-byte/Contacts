@@ -68,6 +68,7 @@ void SortContact(Contact* pc);
 void SaveContact(const Contact* pc);
 
 //加载文件的信息到通讯录中
+void LoadContact(Contact* pc);
 
 
 
