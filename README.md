@@ -19,3 +19,9 @@ Run the generated `通讯录.exe` from a writable working directory.
 - 0 saves the address book and exits.
 
 Text inputs are whitespace-delimited. Name lookup matches the first exact name.
+
+## Local data
+
+The program reads and writes `contact.txt` in its working directory. The file
+contains binary C records. Use the same build format when reopening the file.
+The file may contain personal information and is excluded from Git.
