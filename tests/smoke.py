@@ -33,6 +33,16 @@ class ContactsSmokeTest(unittest.TestCase):
         for output in (self.run_contacts([*record, 5, 0]), self.run_contacts([5, 0])):
             self.assertRegex(output, rb"Avery\s+32\s+X\s+5550100\s+Oak")
 
+    def test_search_edit_and_delete(self):
+        self.run_contacts([1, "Avery", 32, "X", "5550100", "Oak", 0])
+        found = self.run_contacts([3, "Avery", 0])
+        self.assertRegex(found, rb"Avery\s+32\s+X\s+5550100\s+Oak")
+        updated = self.run_contacts([4, "Avery", "Avery", 33, "X", "5550199", "Elm", 5, 0])
+        self.assertRegex(updated, rb"Avery\s+33\s+X\s+5550199\s+Elm")
+        deleted = self.run_contacts([2, "Avery", 5, 0])
+        self.assertNotIn(b"Avery", deleted)
+        self.assertEqual((self.working_directory / "contact.txt").read_bytes(), b"")
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
