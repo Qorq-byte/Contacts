@@ -1,0 +1,36 @@
+import re
+import subprocess
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+
+
+class ContactsSmokeTest(unittest.TestCase):
+    def setUp(self):
+        working_directory = tempfile.TemporaryDirectory()
+        self.addCleanup(working_directory.cleanup)
+        self.working_directory = Path(working_directory.name)
+
+    def run_contacts(self, commands):
+        result = subprocess.run(
+            [executable],
+            input=("\n".join(map(str, commands)) + "\n").encode("ascii"),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            cwd=self.working_directory,
+            check=True,
+            timeout=10,
+        )
+        return result.stdout
+
+    def test_exit_writes_empty_address_book(self):
+        self.run_contacts([0])
+        self.assertEqual((self.working_directory / "contact.txt").read_bytes(), b"")
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        raise SystemExit("Usage: python tests/smoke.py PATH_TO_CONTACTS_EXE")
+    executable = str(Path(sys.argv.pop(1)).resolve(strict=True))
+    unittest.main()
