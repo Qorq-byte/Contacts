@@ -28,6 +28,11 @@ class ContactsSmokeTest(unittest.TestCase):
         self.run_contacts([0])
         self.assertEqual((self.working_directory / "contact.txt").read_bytes(), b"")
 
+    def test_add_display_and_reload(self):
+        record = [1, "Avery", 32, "X", "5550100", "Oak"]
+        for output in (self.run_contacts([*record, 5, 0]), self.run_contacts([5, 0])):
+            self.assertRegex(output, rb"Avery\s+32\s+X\s+5550100\s+Oak")
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
