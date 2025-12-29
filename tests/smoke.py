@@ -43,6 +43,15 @@ class ContactsSmokeTest(unittest.TestCase):
         self.assertNotIn(b"Avery", deleted)
         self.assertEqual((self.working_directory / "contact.txt").read_bytes(), b"")
 
+    def test_sort_by_name(self):
+        self.run_contacts([
+            1, "Zoe", 32, "X", "5550100", "Oak",
+            1, "Amy", 31, "X", "5550101", "Elm",
+            6, 0,
+        ])
+        output = self.run_contacts([5, 0])
+        self.assertEqual(re.findall(rb"(Amy|Zoe)\s+\d+", output), [b"Amy", b"Zoe"])
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
