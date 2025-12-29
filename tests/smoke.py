@@ -52,6 +52,17 @@ class ContactsSmokeTest(unittest.TestCase):
         output = self.run_contacts([5, 0])
         self.assertEqual(re.findall(rb"(Amy|Zoe)\s+\d+", output), [b"Amy", b"Zoe"])
 
+    def test_grow_past_initial_capacity(self):
+        commands = []
+        for index in range(6):
+            commands.extend([1, f"Contact{index}", 32, "X", f"555010{index}", "Oak"])
+        self.run_contacts([*commands, 0])
+        output = self.run_contacts([5, 0])
+        self.assertEqual(
+            re.findall(rb"(Contact[0-5])\s+32", output),
+            [f"Contact{index}".encode("ascii") for index in range(6)],
+        )
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
