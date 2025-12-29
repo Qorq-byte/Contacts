@@ -25,3 +25,13 @@ Text inputs are whitespace-delimited. Name lookup matches the first exact name.
 The program reads and writes `contact.txt` in its working directory. The file
 contains binary C records. Use the same build format when reopening the file.
 The file may contain personal information and is excluded from Git.
+
+## Smoke tests
+
+Build the program, then run the tests with Python 3 from the repository root:
+
+~~~powershell
+python tests/smoke.py "x64/Debug/通讯录.exe"
+~~~
+
+The tests run the executable in isolated temporary directories.
